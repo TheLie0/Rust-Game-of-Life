@@ -2,18 +2,25 @@ extern crate console;
 extern crate rand;
 
 use console::Term;
+use std::thread::sleep;
+use std::time::{Duration, Instant};
 
 fn main() {
     let cutoff: f32 = 0.3;
+    let frame_wait_time = Duration::from_millis(70);
     let term = Term::stdout();
 
     let mut game = GameOfLife::new(255, 255, cutoff);
     game.print_to_console(&term);
+    let mut now = Instant::now();
+    sleep(frame_wait_time);
     loop {
         game.update();
         if game.print_to_console(&term) == 0 {
             game = GameOfLife::new(255, 255, cutoff);
         }
+        now = Instant::now();
+        sleep(frame_wait_time);
     }
 }
 
