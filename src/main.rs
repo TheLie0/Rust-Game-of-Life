@@ -119,6 +119,9 @@ fn random_one_or_zero_with_cutoff_point(cutoff: f32) -> u16 {
 
 fn get_movement_score(cell: u16) -> usize {
     if (cell & 0b0000000001111110) == ((cell & 0b0001111110000000) >> 6) {
+        /*Checking the matching the last six states with the six before to find
+        out whether the cell is stagnant. The number six is chosen because it 
+        encompasses all regular patterns of size 2, 3 and 6.*/
         return 0;
     }
     return 1;
