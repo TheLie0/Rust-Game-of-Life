@@ -1,0 +1,9 @@
+[package]
+name = "GameOfLife"
+version = "0.1.0"
+authors = ["TheLie0 <wf7za0XoHyYXVEkOeNu8>"]
+edition = "2018"
+
+[dependencies]
+console = "0.7.5"
+rand = "0.6.5"
